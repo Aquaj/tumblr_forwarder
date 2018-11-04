@@ -1,0 +1,58 @@
+<%= form_for @transfer, url: transfers_path do |f| %>
+  <div style="display: flex;">
+    <div>
+      <div>
+        <%= f.label "Source Consumer Key" %>
+        <%= f.text_field :source_consumer_key %>
+      </div>
+      <div>
+        <%= f.label "Source Consumer Secret" %>
+        <%= f.text_field :source_consumer_secret %>
+      </div>
+      <div>
+        <%= f.label "Source Token" %>
+        <%= f.text_field :source_token %>
+      </div>
+      <div>
+        <%= f.label "Source Token Secret" %>
+        <%= f.text_field :source_token_secret %>
+      </div>
+      <div>
+        <%= f.label "Source Blog" %>
+        <%= f.text_field :source_blog %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <%= f.label "Destination Consumer Key" %>
+        <%= f.text_field :destination_consumer_key %>
+      </div>
+      <div>
+        <%= f.label "Destination Consumer Secret" %>
+        <%= f.text_field :destination_consumer_secret %>
+      </div>
+      <div>
+        <%= f.label "Destination Token" %>
+        <%= f.text_field :destination_token %>
+      </div>
+      <div>
+        <%= f.label "Destination Token Secret" %>
+        <%= f.text_field :destination_token_secret %>
+      </div>
+      <div>
+        <%= f.label "Destination Blog" %>
+        <%= f.text_field :destination_blog %>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex;">
+    <div>
+      <%= f.label "Source Tag" %>
+      <%= f.text_field :source_tag %>
+    </div>
+    <div>
+      <%= f.submit "Transfer" %>
+    </div>
+  </div>
+<% end %>
+
