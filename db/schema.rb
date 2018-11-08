@@ -10,6 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_11_06_210715) do
+
+  create_table "posts", force: :cascade do |t|
+    t.string "uuid"
+    t.string "reblog_key"
+    t.string "blog_uuid"
+    t.boolean "reblogged", default: false
+    t.integer "transfer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transfer_id"], name: "index_posts_on_transfer_id"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.string "source_consumer_key"
+    t.string "source_consumer_secret"
+    t.string "source_token"
+    t.string "source_token_secret"
+    t.string "source_blog"
+    t.string "source_tag"
+    t.string "destination_consumer_key"
+    t.string "destination_consumer_secret"
+    t.string "destination_token"
+    t.string "destination_token_secret"
+    t.string "destination_blog"
+    t.string "destination_tag"
+    t.string "owner_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

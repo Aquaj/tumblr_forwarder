@@ -21,6 +21,10 @@
         <%= f.label "Source Blog" %>
         <%= f.text_field :source_blog %>
       </div>
+      <div>
+        <%= f.label "Source Tag" %>
+        <%= f.text_field :source_tag %>
+      </div>
     </div>
     <div>
       <div>
@@ -43,12 +47,16 @@
         <%= f.label "Destination Blog" %>
         <%= f.text_field :destination_blog %>
       </div>
+      <div>
+        <%= f.label "Destination Tag" %>
+        <%= f.text_field :destination_tag %>
+      </div>
     </div>
   </div>
   <div style="display: flex;">
     <div>
-      <%= f.label "Source Tag" %>
-      <%= f.text_field :source_tag %>
+      <%= f.label "Email to notify" %>
+      <%= f.text_field :owner_email %>
     </div>
     <div>
       <%= f.submit "Transfer" %>

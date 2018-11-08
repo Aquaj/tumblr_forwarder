@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  reblog_key: MyString
+  blog_uuid: MyString
+
+two:
+  uuid: MyString
+  reblog_key: MyString
+  blog_uuid: MyString
