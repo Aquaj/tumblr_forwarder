@@ -1,5 +1,0 @@
-<h1>Your transfer from <strong><%= @transfer.source_blog %></strong> to <strong><%= @transfer.destination_blog %></strong> is complete.</h1>
-
-<p>Your transfer from <strong><%= @transfer.source_blog %></strong> to <strong><%= @transfer.destination_blog %></strong> is complete.</p>
-<p>You transferred <%= @transfer.posts.count %> posts from the tag <em>#<%= @transfer.source_tag %></em> on <%= @transfer.source_blog %> to the drafts of <%= @transfer.destination_blog %> <%= "with the tag <em>##{@transfer.destination_tag}</em>".html_safe if @transfer.destination_tag %></p>
-

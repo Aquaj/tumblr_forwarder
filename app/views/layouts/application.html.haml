@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title TumblrForwarder
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body.align-items-md-center{style: "display: flex; min-height: 100vh;"}
+    .container
+      .row.pb-5
+        .col-md-12
+          %h1{ style: 'text-align: center' }= "Jérémie's big blog transfer"
+      - flash.each do |key, message|
+        .pd3.alert.alert-dismissible{ class: "alert-#{key}" }
+          %button.close{ data: { dismiss: :alert } } &times;
+          %strong= key.capitalize+?:
+          = message
+      = yield

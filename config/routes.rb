@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root to: 'transfers#new'
-  resource :transfers, only: [:new, :create]
+  resources :transfers, only: [:new, :create, :show]
 end

@@ -1,0 +1,17 @@
+%h1
+  Your transfer from
+  %strong= @transfer.source_blog
+  to
+  %strong= @transfer.destination_blog
+  is complete.
+%p
+  Your transfer from
+  %strong= @transfer.source_blog
+  to
+  %strong= @transfer.destination_blog
+  is complete.
+%p
+  You transferred #{@transfer.posts.count} posts from the tag
+  %em
+    \##{@transfer.source_tag}
+  on #{@transfer.source_blog} to the drafts of #{@transfer.destination_blog} #{"with the tag <em>##{@transfer.destination_tag}</em>".html_safe if @transfer.destination_tag}

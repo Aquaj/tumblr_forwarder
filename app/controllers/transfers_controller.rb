@@ -6,12 +6,16 @@ class TransfersController < ApplicationController
   def create
     @transfer = Transfer.new(transfer_params)
     if @transfer.save!
-      TransferJob.perform_later(@transfer)
+      # TransferJob.perform_later(@transfer)
       flash['info'] = "Your transfer has been launched! You'll receive an email as soon as it is done!"
-      redirect_to new_transfers_path
+      redirect_to @transfer
     else
       render :new
     end
+  end
+
+  def show
+    @transfer = Transfer.find(params[:id])
   end
 
   private
