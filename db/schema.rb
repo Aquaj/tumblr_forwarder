@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2018_11_06_210715) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "posts", force: :cascade do |t|
     t.string "uuid"
     t.string "reblog_key"
     t.string "blog_uuid"
     t.boolean "reblogged", default: false
-    t.integer "transfer_id"
+    t.bigint "transfer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transfer_id"], name: "index_posts_on_transfer_id"
