@@ -25,10 +25,8 @@ class Transfer < ApplicationRecord
     total_post_count = Float::INFINITY
     old_post_count = -1
     Rails.logger.info "Beginning post fetching..."
-    until posts.count >= 1500
-      result = getter_client.posts(source_blog_path, offset: posts.count)
-    # until posts.count >= total_post_count || posts.count == old_post_count
-    #   result = getter_client.posts(source_blog_path, tag: source_tag, offset: post_ids.count)
+    until posts.count >= total_post_count || posts.count == old_post_count
+      result = getter_client.posts(source_blog_path, tag: source_tag, offset: post_ids.count)
       total_post_count = result['total_posts']
       Rails.logger.info "= Fetched #{post_ids.count} / #{total_post_count}..."
       old_post_count = posts.count
