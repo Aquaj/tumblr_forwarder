@@ -1,4 +1,4 @@
-$redis = Redis.new(size: 3, url: ENV["REDIS_URL"])
+$redis = Redis.new(url: ENV["REDIS_URL"])
 
 Sidekiq.configure_client do |config|
   config.redis = { :size => 1 }
