@@ -31,4 +31,8 @@ $(document).on 'turbolinks:load', ->
         current = (total - current)
         percentage ||= (current / total) * 50
         progressBar.attr('style', "width: #{50 + percentage}%")
-        progressBar.text("#{Math.round(50 + percentage)}%")
+        if (50+percentage < 100)
+          progressBar.text("#{Math.round(50 + percentage)}%")
+        else
+          progressBar.addClass('bg-success')
+          progressBar.text("Transfer complete!")
