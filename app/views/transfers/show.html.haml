@@ -48,5 +48,5 @@
   .col-md-12.progress
     - percentage = 100 if @transfer.posts.count == 0
     - percentage ||= @transfer.posts.where(reblogged: false).count.to_f / @transfer.posts.count
-    #transfer-progress.progress-bar{ data: { transfer_id: @transfer.id, style: "width: #{percentage}" } }
+    #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id, style: "width: #{percentage}" } }
       = percentage.to_i
