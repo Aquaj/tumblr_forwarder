@@ -25,15 +25,18 @@ class Transfer < ApplicationRecord
     total_post_count = Float::INFINITY
     old_post_count = -1
     Rails.logger.info "Beginning post fetching..."
-    until posts.count >= 1500
-      result = getter_client.posts(source_blog_path, offset: post_ids.count)
-    # until posts.count >= total_post_count || posts.count == old_post_count
-    #   result = getter_client.posts(source_blog_path, tag: source_tag, offset: post_ids.count)
+    # until posts.count >= 1500
+    #   result = getter_client.posts(source_blog_path, offset: post_ids.count)
+    until posts.count >= total_post_count || posts.count == old_post_count
+      result = getter_client.posts(source_blog_path, tag: source_tag, offset: post_ids.count)
       total_post_count = result['total_posts']
       Rails.logger.info "= Fetched #{post_ids.count} / #{total_post_count}..."
       old_post_count = posts.count
       blog = result['blog']
       create_posts(result['posts'], blog)
+      TransferChannel.broadcast_to(self, type: 'fetch',
+                                         current: posts.count,
+                                         total: total_post_count)
     end
     Rails.logger.info "Done fetching posts!"
   end
@@ -60,7 +63,13 @@ class Transfer < ApplicationRecord
     to_reblog.find_each.each_with_index do |post, index|
       Rails.logger.info "= Reblogging post #{index}/#{to_reblog.count}..."
       success = post.reblog(to: destination_blog_path, tags: [destination_tag])
-      failed += 1 unless success
+      if success
+        TransferChannel.broadcast_to(self, type: 'reblog',
+                                           current: to_reblog.count,
+                                           total: posts.count)
+      else
+        failed += 1
+      end
       break Rails.logger.warn <<-MSG if failed >= 5
         Failed to reblog several posts in a row. Delaying reblogs to later.
         Remaining posts: #{to_reblog.count}.
