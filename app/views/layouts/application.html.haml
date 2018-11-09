@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title TumblrForwarder
+    %title JBBT
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -12,7 +12,7 @@
     .container.p3{ style: 'background: rgba(255, 255, 255, 0.9)' }
       .row.pb-5
         .col-md-12
-          %h1{ style: 'text-align: center' }= "Jérémie's big blog transfer"
+          %h1{ style: 'text-align: center' }= "Jérémie's Big Blog Transfer"
       - flash.each do |key, message|
         .pd3.alert.alert-dismissible{ class: "alert-#{key}" }
           %button.close{ data: { dismiss: :alert } } &times;
