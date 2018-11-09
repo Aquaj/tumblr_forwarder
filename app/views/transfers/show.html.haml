@@ -47,6 +47,9 @@
       = @transfer.owner_email
   .col-md-12.progress
     - percentage = 100 if @transfer.posts.count == 0
-    - percentage ||= @transfer.posts.where(reblogged: false).count.to_f / @transfer.posts.count
+    - remaining = @transfer.posts.where(reblogged: false).count.to_f
+    - total = @transfer.posts.count
+    - current = total - remaining
+    - percentage ||= 50 + current / total
     #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id, style: "width: #{percentage}" } }
-      = percentage.to_i
+      = percentage.to_i if percentage %= 0
