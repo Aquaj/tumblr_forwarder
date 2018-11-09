@@ -5,6 +5,13 @@
     %h2{ style: 'text-align: center;' } Destination
   .col-md-4.offset-md-1.source
     %p
+      %strong Blog
+      = @transfer.source_blog
+    %p
+      %strong Tag
+      = @transfer.source_tag
+    %br
+    %p
       %strong Consumer Key
       = @transfer.source_consumer_key
     %p
@@ -16,13 +23,14 @@
     %p
       %strong Token Secret
       = @transfer.source_token_secret
+  .col-md-4.offset-md-2.destination
     %p
       %strong Blog
-      = @transfer.source_blog
+      = @transfer.destination_blog
     %p
       %strong Tag
-      = @transfer.source_tag
-  .col-md-4.offset-md-2.destination
+      = @transfer.destination_tag
+    %br
     %p
       %strong Consumer Key
       = @transfer.destination_consumer_key
@@ -35,12 +43,6 @@
     %p
       %strong Token Secret
       = @transfer.destination_token_secret
-    %p
-      %strong Blog
-      = @transfer.destination_blog
-    %p
-      %strong Tag
-      = @transfer.destination_tag
   .col-md-12
     %p{ style: 'text-align: center;' }
       %strong Email
