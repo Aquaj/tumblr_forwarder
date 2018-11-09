@@ -8,14 +8,93 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = action_cable_meta_tag
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body.align-items-md-center{style: "display: flex; min-height: 100vh; background-image: url('https://images.unsplash.com/photo-1536552959998-fcb3133bbe3a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4404f0ca4fa3a7c901c877af0723feec&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb')"}
+    = stylesheet_link_tag "https://pro.fontawesome.com/releases/v5.5.0/css/all.css", integrity: "sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt", crossorigin: :anonymous
+  %body.align-items-md-center{style: "display: flex; min-height: 100vh; background: url('#{asset_path "background jbbt.jpg" }'); background-size: cover;"}
+    = link_to '#about', data: { toggle: 'modal' } do
+      %i.far.fa-question-circle.text-primary{ style: 'position: absolute; top: 10px; right: 10px; font-size: 30px' }
     .container.p-3{ style: 'background: rgba(255, 255, 255, 0.9)' }
       .row.pb-5
         .col-md-12
-          %h1{ style: 'text-align: center' }= "Jérémie's Big Blog Transfer"
+          %h1.text-center= "Jérémie's Big Blog Transfer"
       - flash.each do |key, message|
         .pd3.alert.alert-dismissible{ class: "alert-#{key}" }
           %button.close{ data: { dismiss: :alert } } &times;
           %strong= key.capitalize+?:
           = message
       = yield
+
+.modal.fade#about
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %h4.modal-title So what is up, Kyle?
+        %button.close{ data: { dismiss: :modal } } &times;
+
+      .modal-body
+        %p First of all, my name's Jérémie.
+        %p
+          What is up is that you can transfer a bunch of posts from one blog to the other (hopefully) pretty easily with this tool.
+          It needs to know where blog from, under what tag they are and to what blog we're carrying them over. Then it adds all of that to the
+          %strong drafts
+          of that second blog.
+        %hr
+        %h4 What are those other fields then?
+        %p Oh yeah, those.
+        %p
+          The thing is, you're trying to join two blogs here, possibly on two separate accounts and stuff. Also I didn't really bother going to tumblr and asking for their permission.
+          So what you need to do is go edit "keys" to allow this app to acces your data.
+        %h4 How do I do that? I'm not a developer, Mike!
+        %p
+          Okay, so first of all it's
+          %em Jérémie
+          I already told you. And I'm here to tell you how to get these info. It's a tad long so I've prepared pictures.
+        %h5 Getting them keys.
+        %ol
+          %li
+            Connect with your first tumblr account (the one that's going to serve as source) and go to
+            = link_to 'tumblr\'s apps page', 'https://www.tumblr.com/oauth/apps'
+            \.
+            %br
+            = image_tag image_path('tutorial/1.png'), width: '500px', class: 'img-fluid'
+          %li
+            Click on the big green "Register application" button.
+            %br
+            = image_tag image_path('tutorial/2.png'), width: '500px', class: 'img-fluid'
+          %li
+            Fill up the form with whatever you want. Don't bother with the fields that aren't required. You can use this website's URL whenever they ask for one.
+            %br
+            = image_tag image_path('tutorial/3.png'), width: '500px', class: 'img-fluid'
+          %li
+            Go back to the app's page, you should see your new app now. Click on the "Explore API" link.
+            %br
+            = image_tag image_path('tutorial/4.png'), width: '500px', class: 'img-fluid'
+          %li
+            You should see a prompt to grant access to your app to your account's data. Accept to do so.
+            %br
+            = image_tag image_path('tutorial/5.png'), width: '500px', class: 'img-fluid'
+          %li
+            We're almost there. See the link where it says "Show keys"? Remember what we're trying to get? Click on it.
+            %br
+            = image_tag image_path('tutorial/6.png'), width: '500px', class: 'img-fluid'
+          %li
+            Jackpot!
+            Copy those into their respective fields, the order should match.
+            %br
+            = image_tag image_path('tutorial/7.png'), width: '500px', class: 'img-fluid'
+          %li
+            %strong Repeat with your destination account
+            to fill the right-side of the form.
+
+        %h4 Alright nice. What're you gonna do with my email tho?
+        %p
+          If you wanna be warned by email when the transfer is done, fill in the field. I swear I have nothing else I could ever want to do with your email and will never use it for anything but that one email, but if you don't trust me or care about getting an email, you don't have to fill it, see if I care.
+
+        %h4 Okay cool. But why'd you build this then? What do you gain from this?
+        %p
+          Yeah, this doesn't cost me a penny, it's all built on free stuff. I built it for a friend who needed to move 1400 posts, figured I could let it up. I gained nothing from it except the opportunity to work out my coding muscles a little.
+          If you wanna
+          = link_to "follow me on tumblr", "http://breadstyx.tumblr.com"
+          and message me to express your gratitude though, I'm fine with that though.
+
+      .modal-footer
+        %button.btn.btn-primary{ data: { dismiss: "modal" } } Okay I got it, thanks!
