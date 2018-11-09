@@ -22,7 +22,7 @@ $(document).on 'turbolinks:load', ->
         current = parseFloat(transfer.current)
         percentage ||= (current / total) * 50
         progressBar.attr('style', "width: #{percentage}%")
-        progressBar.text(Math.round(percentage))
+        progressBar.text("#{Math.round(percentage)}%")
 
       updateReblog: (transfer) ->
         percentage = 100 if transfer.total == 0
@@ -31,4 +31,4 @@ $(document).on 'turbolinks:load', ->
         current = (total - current)
         percentage ||= (current / total) * 50
         progressBar.attr('style', "width: #{50 + percentage}%")
-        progressBar.text(Math.round(50 + percentage))
+        progressBar.text("#{Math.round(50 + percentage)}%")

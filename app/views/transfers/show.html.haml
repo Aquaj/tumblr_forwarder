@@ -51,5 +51,9 @@
     - total = @transfer.posts.count
     - current = total - remaining
     - percentage ||= 50 + current / total
-    #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id, style: "width: #{percentage}" } }
-      = percentage.to_i if percentage %= 0
+    - if percentage < 100
+      #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id }, style: "width: #{percentage}" }
+        = percentage.to_i.to_s + ?% if percentage == 0
+    - else
+      #transfer-progress.progress-bar.progress-bar-success{ data: { transfer_id: @transfer.id }, style: 'width: 100%;' }
+        100%
