@@ -8,8 +8,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = action_cable_meta_tag
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body.align-items-md-center{style: "display: flex; min-height: 100vh;"}
-    .container
+  %body.align-items-md-center{style: "display: flex; min-height: 100vh; background-image: url('https://images.unsplash.com/photo-1536552959998-fcb3133bbe3a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4404f0ca4fa3a7c901c877af0723feec&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb')"}
+    .container.p3{ style: 'background: rgba(255, 255, 255, 0.9)' }
       .row.pb-5
         .col-md-12
           %h1{ style: 'text-align: center' }= "Jérémie's big blog transfer"
