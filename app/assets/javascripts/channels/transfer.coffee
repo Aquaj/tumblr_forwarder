@@ -18,10 +18,15 @@ $(document).on 'turbolinks:load', ->
 
       updateFetch: (transfer) ->
         percentage = 50 if transfer.total == 0
-        percentage ||= parseFloat(transfer.current) / parseFloat(transfer.total) * 50
+        total = parseFloat(transfer.total)
+        current = parseFloat(transfer.current)
+        percentage ||= (current / total) * 50
         progressBar.attr('style', "width: #{percentage}%")
 
       updateReblog: (transfer) ->
         percentage = 100 if transfer.total == 0
-        percentage ||= 50 + parseFloat(transfer.current) / parseFloat(transfer.total) * 50
-        progressBar.attr('style', "width: #{percentage}%")
+        total = parseFloat(transfer.total)
+        remaining = parseFloat(transfer.current)
+        current = (total - current)
+        percentage ||= (current / total) * 50
+        progressBar.attr('style', "width: #{50 + percentage}%")
