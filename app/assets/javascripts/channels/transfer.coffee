@@ -12,9 +12,9 @@ $(document).on 'turbolinks:load', ->
       received: (transfer) ->
         type = transfer.type
         if type == "fetch"
-          updateFetch(transfer)
+          @updateFetch(transfer)
         else
-          updateReblog(transfer)
+          @updateReblog(transfer)
 
       updateFetch: (transfer) ->
         percentage = 50 if transfer.total == 0
