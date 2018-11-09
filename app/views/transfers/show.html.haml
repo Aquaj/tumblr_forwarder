@@ -45,16 +45,17 @@
     %p{ style: 'text-align: center;' }
       %strong Email
       = @transfer.owner_email
-  .col-md-12.progress
-    - percentage = 50 if @transfer.posts.count == 0
-    - remaining = @transfer.posts.where(reblogged: false).count.to_f
-    - total = @transfer.posts.count
-    - current = total - remaining
-    - percentage ||= current / total * 50
-    - percentage += 50
-    - if percentage < 100
-      #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id }, style: "width: #{percentage}%;" }
-        = percentage.to_i.to_s + ?% if percentage != 0
-    - else
-      #transfer-progress.progress-bar.bg-success{ data: { transfer_id: @transfer.id }, style: 'width: 100%;' }
-        Transfer complete!
+  .col-md-12
+    .progress
+      - percentage = 50 if @transfer.posts.count == 0
+      - remaining = @transfer.posts.where(reblogged: false).count.to_f
+      - total = @transfer.posts.count
+      - current = total - remaining
+      - percentage ||= current / total * 50
+      - percentage += 50
+      - if percentage < 100
+        #transfer-progress.progress-bar.progress-bar-striped.progress-bar-animated{ data: { transfer_id: @transfer.id }, style: "width: #{percentage}%;" }
+          = percentage.to_i.to_s + ?% if percentage != 0
+      - else
+        #transfer-progress.progress-bar.bg-success{ data: { transfer_id: @transfer.id }, style: 'width: 100%;' }
+          Transfer complete!
