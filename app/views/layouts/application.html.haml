@@ -33,7 +33,9 @@
       .modal-body
         %p First of all, my name's Jérémie.
         %p
-          What is up is that you can transfer a bunch of posts from one blog to the other (hopefully) pretty easily with this tool.
+          What is up is that
+          %strong you can transfer a bunch of posts from one blog to the other
+          pretty easily (hopefully) with this tool.
           It needs to know where blog from, under what tag they are and to what blog we're carrying them over. Then it adds all of that to the
           %strong drafts
           of that second blog.
@@ -42,7 +44,9 @@
         %p Oh yeah, those.
         %p
           The thing is, you're trying to join two blogs here, possibly on two separate accounts and stuff. Also I didn't really bother going to tumblr and asking for their permission.
-          So what you need to do is go edit "keys" to allow this app to acces your data.
+          So what you need to do is
+          %strong go edit "keys"
+          to allow this app to access your data.
         %h4 How do I do that? I'm not a developer, Mike!
         %p
           Okay, so first of all it's
@@ -52,35 +56,42 @@
         %ol
           %li
             Connect with your first tumblr account (the one that's going to serve as source) and go to
-            = link_to 'tumblr\'s apps page', 'https://www.tumblr.com/oauth/apps'
+            %strong= link_to 'tumblr\'s apps page', 'https://www.tumblr.com/oauth/apps'
             \.
             %br
-            = image_tag image_path('tutorial/1.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/1.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
-            Click on the big green "Register application" button.
+            %strong Click on the big green "Register application" button.
             %br
-            = image_tag image_path('tutorial/2.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/2.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
-            Fill up the form with whatever you want. Don't bother with the fields that aren't required. You can use this website's URL whenever they ask for one.
+            %strong Fill up the form
+            with whatever you want. Don't bother with the fields that aren't required. You can use this website's URL whenever they ask for one.
             %br
-            = image_tag image_path('tutorial/3.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/3.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
-            Go back to the app's page, you should see your new app now. Click on the "Explore API" link.
+            Go back to the app's page, you should see your new app now.
+            %strong  Click on the "Explore API" link.
             %br
-            = image_tag image_path('tutorial/4.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/4.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
-            You should see a prompt to grant access to your app to your account's data. Accept to do so.
+            You should see a prompt to grant access to your app to your account's data.
+            %strong Accept
+            to do so.
             %br
-            = image_tag image_path('tutorial/5.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/5.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
-            We're almost there. See the link where it says "Show keys"? Remember what we're trying to get? Click on it.
+            We're almost there. See the link where it says "Show keys"? Remember what we're trying to get?
+            %strong Click on it.
             %br
-            = image_tag image_path('tutorial/6.png'), width: '500px', class: 'img-fluid'
+            = image_tag image_path('tutorial/6.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
             Jackpot!
-            Copy those into their respective fields, the order should match.
             %br
-            = image_tag image_path('tutorial/7.png'), width: '500px', class: 'img-fluid'
+            %strong Copy those into their respective fields,
+            the order should match.
+            %br
+            = image_tag image_path('tutorial/7.png'), width: '500px', class: 'img-fluid p-2 pb-3'
           %li
             %strong Repeat with your destination account
             to fill the right-side of the form.
@@ -92,6 +103,7 @@
         %h4 Okay cool. But why'd you build this then? What do you gain from this?
         %p
           Yeah, this doesn't cost me a penny, it's all built on free stuff. I built it for a friend who needed to move 1400 posts, figured I could let it up. I gained nothing from it except the opportunity to work out my coding muscles a little.
+          %br
           If you wanna
           = link_to "follow me on tumblr", "http://breadstyx.tumblr.com"
           and message me to express your gratitude though, I'm fine with that though.
