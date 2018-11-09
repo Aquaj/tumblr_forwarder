@@ -27,16 +27,17 @@ $(document).on 'turbolinks:load', ->
         progressBar.text("#{Math.round(percentage)}%")
 
       updateReblog: (transfer) ->
-        percentage = 100 if transfer.total == 0
+        percentage = 50 if transfer.total == 0
         total = parseFloat(transfer.total)
         remaining = parseFloat(transfer.current)
         current = (total - current)
         percentage ||= (current / total) * 50
-        progressBar.attr('style', "width: #{50 + percentage}%")
-        if (50+percentage < 100)
+        percentage = percentage + 50
+        progressBar.attr('style', "width: #{percentage}%")
+        if (percentage < 100)
           progressBar.removeClass('bg-success')
           progressBar.addClass('progress-bar-striped progress-bar-animated')
-          progressBar.text("#{Math.round(50 + percentage)}%")
+          progressBar.text("#{Math.round(percentage)}%")
         else
           progressBar.addClass('bg-success')
           progressBar.removeClass('progress-bar-striped')
