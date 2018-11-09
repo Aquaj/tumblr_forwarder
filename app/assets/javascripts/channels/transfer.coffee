@@ -30,7 +30,7 @@ $(document).on 'turbolinks:load', ->
         percentage = 50 if transfer.total == 0
         total = parseFloat(transfer.total)
         remaining = parseFloat(transfer.current)
-        current = (total - current)
+        current = (total - remaining)
         percentage ||= (current / total) * 50
         percentage = percentage + 50
         progressBar.attr('style', "width: #{percentage}%")
